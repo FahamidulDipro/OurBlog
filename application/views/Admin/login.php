@@ -5,7 +5,7 @@ include "header.php";
     <h1 style="margin-top:20px;">Admin Form</h1>
     <hr>
     <?php
-    echo form_open('Admin/index');
+    echo form_open('Admin/login');
     ?>
     <div class="row">
         <div class="col-lg-6">
