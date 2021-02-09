@@ -26,7 +26,8 @@
                 
                 }
                 else{
-                    echo "Details doesn't match";
+                   $this->session->set_flashdata('login_failed','Invalid username or password');
+                   return redirect('Admin/login');
                 }
                 
             }
@@ -85,6 +86,11 @@
         }
         public function deleteUser(){
 
+        }
+
+        public function logout(){
+            $this->session->unset_userdata('id');
+            return redirect('Admin/login');
         }
     }
 ?>
