@@ -14,7 +14,9 @@
                     $this->load->library('session');
                     $this->session->set_userdata('id',$id);
                     echo $_SESSION['id'];
-                    $this->load->view('Admin/dashboard');
+             
+                    return redirect('Admin/welcome');
+                
                 }
                 else{
                     echo "Details doesn't match";
@@ -26,6 +28,12 @@
                 $this->load->view('Admin/login');
             }
           
+        }
+
+        public function welcome(){
+            $this->load->model('loginModel');
+            $articles=$this->loginModel->articleList();
+            $this->load->view('Admin/dashboard',['articles'=>$articles]);
         }
     }
 ?>

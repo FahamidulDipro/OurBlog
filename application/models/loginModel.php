@@ -10,5 +10,13 @@
                        }
 
         }
+        public function articleList(){
+            $id=$this->session->userdata('id');
+            $q=$this->db->select('title')
+                     ->from('articles')
+                     ->where(['id'=>$id])
+                     ->get();
+                    return $q->result();
+        }
     }
 ?>

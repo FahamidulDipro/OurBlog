@@ -1,12 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-</head>
-<body>
-    <h1><span style="color:green;">Login successful!</span> Welcome to Admin Panel</h1>
-</body>
-</html>
+<?php
+include "header.php";
+?>
+<div class="container mt-5">
+    <!-- <h1 class="mt-3"><span class="text-success">Login successful!</span> Welcome to Admin Panel</h1> -->
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Article Title</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <?php
+            if (count($articles)>0) {
+                foreach ($articles as $art) {
+                    echo ' <td>1</td>
+                    <td>'.$art->title.'</td>
+                    <td><a href="#" class="btn btn-primary">Edit</a></td>
+                    <td><a href="#" class="btn btn-danger">Delete</a></td>';
+                }
+            }else{
+                echo'<tr><td colspan="3">No data available</td></tr>';
+            }
+
+            ?>
+
+        </tbody>
+    </table>
+</div>
+
+<?php
+include "footer.php";
+?>
