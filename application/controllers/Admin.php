@@ -1,5 +1,12 @@
 <?php
     class Admin extends My_controller{
+        public function __construct()
+        {
+            parent::__construct();
+            // if(!$this->session->userdata('id')){
+            //     return redirect('Admin/login');
+            // }
+        }
         public function login(){
             $this->form_validation->set_rules('username','User Name','required|alpha');
             $this->form_validation->set_rules('password','Password','required|max_length[12]');
@@ -31,9 +38,14 @@
         }
 
         public function welcome(){
-            $this->load->model('loginModel');
-            $articles=$this->loginModel->articleList();
-            $this->load->view('Admin/dashboard',['articles'=>$articles]);
+            if(!$this->session->userdata('id')){
+                return redirect('Admin/login');
+            }else{
+                $this->load->model('loginModel');
+                $articles=$this->loginModel->articleList();
+                $this->load->view('Admin/dashboard',['articles'=>$articles]);
+            }
+          
         }
 
         public function register(){
@@ -63,6 +75,16 @@
             }else{
                 $this->load->view('Admin/register');
             }
+        }
+
+        public function addUser(){
+            
+        }
+        public function editUser(){
+
+        }
+        public function deleteUser(){
+
         }
     }
 ?>
