@@ -23,6 +23,7 @@ include "header.php";
             </div>
             <?php echo form_submit(['class' => 'btn btn-info', 'type' => 'submit', 'value' => 'Submit']); ?>
             <?php echo form_reset(['class' => 'btn btn-secondary', 'type' => 'reset', 'value' => 'Reset']); ?>
+            <a href="register">Signup</a>
         </div>
         <div class="col-lg-6 text-danger mt-4">
             <?php

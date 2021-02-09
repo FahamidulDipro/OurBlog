@@ -14,7 +14,7 @@
             $id=$this->session->userdata('id');
             $q=$this->db->select('title')
                      ->from('articles')
-                     ->where(['id'=>$id])
+                     ->where(['user_id'=>$id])
                      ->get();
                     return $q->result();
         }
