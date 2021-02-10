@@ -21,10 +21,13 @@
         }
         public function userValidation(){
             if($this->form_validation->run('add_article_rules')){
-                echo "Ok";
+                $post= $this->input->post();
+                $this->load->model('loginModel');
+                $this->loginModel->addArticles($post);
+                // echo "Ok";
             }else{
+                $this->session->set_flashdata('insert_failed','Invalid Article name or Description');
                 $this->load->view('Admin/add_article');
-                echo"No";
             }
         }
 

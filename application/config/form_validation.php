@@ -1,8 +1,8 @@
 <?php
 $config = [
     'add_article_rules' => [
-        ['field' => 'article_title', 'label' => 'Article Title', 'rules' => 'required|alpha'],
-        ['field' => 'description', 'label' => 'Description', 'rules' => 'required|alpha']
+        ['field' => 'article_title', 'label' => 'Article Title', 'rules' => 'required'],
+        ['field' => 'description', 'label' => 'Description', 'rules' => 'required']
 
     ],
     'login_user_rules' => [
