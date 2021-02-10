@@ -8,10 +8,7 @@
             }
         }
         public function index(){
-            $this->form_validation->set_rules('username','User Name','required|alpha');
-            $this->form_validation->set_rules('password','Password','required|max_length[12]');
-            if(  $this->form_validation->run()){
-                // echo "Validation Successful";
+            if(  $this->form_validation->run('login_user_rules')){
                 $username = $this->input->post('username');
                 $password = $this->input->post('password');
                 $this->load->model('loginModel');

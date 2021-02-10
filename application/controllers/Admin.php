@@ -19,6 +19,14 @@
             }
           
         }
+        public function userValidation(){
+            if($this->form_validation->run('add_article_rules')){
+                echo "Ok";
+            }else{
+                $this->load->view('Admin/add_article');
+                echo"No";
+            }
+        }
 
         public function register(){
             $this->load->view('Admin/register');
@@ -51,6 +59,7 @@
 
         public function addUser(){
             $this->load->view('Admin/add_article');
+
         }
         public function editUser(){
 

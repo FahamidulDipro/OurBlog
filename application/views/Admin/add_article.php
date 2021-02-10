@@ -6,7 +6,7 @@ include "header.php";
     <hr>
     <?php
     echo form_hidden('user_id','$this->session-user("id")');
-    echo form_open('');
+    echo form_open('Admin/userValidation');
     ?>
     <div class="row">
         <div class="col-lg-6">
