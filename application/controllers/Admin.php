@@ -32,13 +32,8 @@
             $this->load->view('Admin/register');
         }
         public function sendmail(){
-            $this->form_validation->set_rules('username','User Name','required|alpha');
-            $this->form_validation->set_rules('firstname','First Name','required|alpha');
-            $this->form_validation->set_rules('lastname','Last Name','required|alpha');
-            $this->form_validation->set_rules('email','Email','required|valid_email|is_unique[users.email]');
-            $this->form_validation->set_rules('password','Password','required|max_length[12]');
             $this->form_validation->set_error_delimiters('<div class="text-danger">','</div');
-            if($this->form_validation->run()){
+            if($this->form_validation->run('send_email_rules')){
               $this->load->library('email');
               $this->email->from(set_value('email'),set_value('firstname'));
               $this->email->to("mdfahamidulislam047@gmail.com");
