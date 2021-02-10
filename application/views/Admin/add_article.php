@@ -10,15 +10,15 @@ include "header.php";
     <div class="row">
         <div class="col-lg-6">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Username</label>
+                <label for="exampleInputEmail1" class="form-label">Article Title</label>
                 <?php
-                echo form_input(['class' => 'form-control', 'placeholder' => 'Username', 'type' => 'text', 'name' => 'username','value'=>set_value('username')]);
+                echo form_input(['class' => 'form-control', 'placeholder' => 'Article Title', 'type' => 'text', 'name' => 'article_title','value'=>set_value('article_title')]);
                 ?>
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <label for="exampleInputPassword1" class="form-label">Article Description</label>
                 <?php
-                echo form_input(['class' => 'form-control', 'placeholder' => 'Password', 'type' => 'password', 'name' => 'password', 'value'=>set_value('password')]);
+                echo form_textarea(['class' => 'form-control', 'placeholder' => 'Description', 'type' => 'text', 'name' => 'description', 'value'=>set_value('description')]);
                 ?>
             </div>
             <?php echo form_submit(['class' => 'btn btn-info', 'type' => 'submit', 'value' => 'Submit']); ?>
