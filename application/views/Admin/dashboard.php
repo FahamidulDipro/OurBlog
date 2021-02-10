@@ -3,7 +3,7 @@ include "header.php";
 ?>
 <div class="container mt-5">
 
-        <div class="btn  btn-primary mb-3">Add Article</div>
+        <a href="addUser"><div class="btn  btn-primary mb-3">Add Article</div></a>
 
     <!-- <h1 class="mt-3"><span class="text-success">Login successful!</span> Welcome to Admin Panel</h1> -->
     <table class="table table-bordered text-center">

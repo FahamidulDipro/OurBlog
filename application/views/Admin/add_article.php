@@ -5,7 +5,8 @@ include "header.php";
     <h1 style="margin-top:20px;">Admin Form</h1>
     <hr>
     <?php
-    echo form_open('login/index');
+    echo form_hidden('user_id','$this->session-user("id")');
+    echo form_open('');
     ?>
     <div class="row">
         <div class="col-lg-6">
