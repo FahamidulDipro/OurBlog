@@ -5,7 +5,8 @@ include "header.php";
     <h1 style="margin-top:20px;">Write Article</h1>
     <hr>
     <?php
-    echo form_hidden('user_id','$this->session-user("id")');
+ 
+ 
     echo form_open('Admin/userValidation');
     ?>
     <?php
@@ -27,6 +28,10 @@ include "header.php";
                 echo form_textarea(['class' => 'form-control', 'placeholder' => 'Description', 'type' => 'text', 'name' => 'description', 'value'=>set_value('description')]);
                 ?>
             </div>
+            <?php   
+                $id = $this->session->userdata("id");
+                echo form_hidden('user_id',$id);
+            ?>
             <?php echo form_submit(['class' => 'btn btn-info', 'type' => 'submit', 'value' => 'Submit']); ?>
             <?php echo form_reset(['class' => 'btn btn-secondary', 'type' => 'reset', 'value' => 'Reset']); ?>
         </div>

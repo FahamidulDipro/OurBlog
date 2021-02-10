@@ -19,7 +19,7 @@ include "header.php";
         <tbody>
 
             <?php
-            if (count($articles) > 0) {
+            if (count($articles)) {
                 foreach ($articles as $art) {
                     echo ' <tr><td>1</td>
                     <td>' . $art->article_title . '</td>

@@ -17,6 +17,7 @@
                      ->where(['user_id'=>$id])
                      ->get();
                     return $q->result();
+
         }
         public function addArticles($array){
             return $this->db->insert('articles',$array);

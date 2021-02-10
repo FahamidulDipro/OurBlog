@@ -12,9 +12,13 @@
         public function welcome(){
             if(!$this->session->userdata('id')){
                 return redirect('Admin/login');
+                
             }else{
                 $this->load->model('loginModel');
                 $articles=$this->loginModel->articleList();
+                // print_r($articles);
+                // echo "working";
+                // echo $this->session->userdata('id');
                 $this->load->view('Admin/dashboard',['articles'=>$articles]);
             }
           
@@ -24,6 +28,7 @@
                 $post= $this->input->post();
                 $this->load->model('loginModel');
                 $this->loginModel->addArticles($post);
+                echo'<div class="alert alert-success text-bold">Article added successfuly!</div>';
                 // echo "Ok";
             }else{
                 $this->session->set_flashdata('insert_failed','Invalid Article name or Description');
