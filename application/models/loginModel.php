@@ -12,7 +12,7 @@
         }
         public function articleList(){
             $id=$this->session->userdata('id');
-            $q=$this->db->select('article_title')
+            $q=$this->db->select('*')
                      ->from('articles')
                      ->where(['user_id'=>$id])
                      ->get();
@@ -26,15 +26,12 @@
            return $this->db->insert('users',$array);
 
         }
-        public function editUser(){
+        public function edit(){
 
         }
-        public function deleteUser(){
-
+        public function delete($id){
+           return $this->db->delete('articles',['id'=>$id]);
         }
-        public function register()
-        {
-            // $this->load->view('Admin/register');
-        }
+      
     }
 ?>

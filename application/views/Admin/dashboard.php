@@ -23,8 +23,13 @@ include "header.php";
                 foreach ($articles as $art) {
                     echo ' <tr><td>1</td>
                     <td>' . $art->article_title . '</td>
-                    <td><a href="#" class="btn btn-primary">Edit</a></td>
-                    <td><a href="#" class="btn btn-danger">Delete</a></td></tr>';
+                    <td><a href="#" class="btn btn-primary">Edit</a></td><td>';
+
+                   echo form_open('Admin/delArticle');
+                   echo  form_hidden('id',$art->id);
+                   echo form_submit(['name'=>'submit','value'=>'delete','class'=>'btn btn-danger']);
+                    form_close();
+                    echo '</td>';
                 }
             } else {
                 echo '<tr><td colspan="3">No data available</td></tr>';

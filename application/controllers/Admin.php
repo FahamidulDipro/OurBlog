@@ -81,5 +81,25 @@ class Admin extends My_controller
         $this->session->unset_userdata('id');
         return redirect('login/index');
     }
+    public function editUser(){
+
+    }
+    public function delArticle(){
+        $id=$this->input->post('id');
+        $this->load->model('loginModel');
+        if($this->loginModel->delete($id)){
+            $this->session->set_flashdata('delete_success', 'Article deleted successfully!');
+            $this->load->view('Admin/add_article');
+           
+        }else{
+            $this->session->set_flashdata('delete_failed', 'Article cannot be deleted');
+            $this->load->view('Admin/add_article'); 
+           
+        }
+     
+        
+
+        
+    }
 }
 ?>
