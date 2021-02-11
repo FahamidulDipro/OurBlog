@@ -10,11 +10,12 @@
                        }
 
         }
-        public function articleList(){
+        public function articleList($limit,$offset){
             $id=$this->session->userdata('id');
             $q=$this->db->select('*')
                      ->from('articles')
                      ->where(['user_id'=>$id])
+                     ->limit($limit,$offset)
                      ->get();
                     return $q->result();
 
@@ -31,6 +32,14 @@
         }
         public function delete($id){
            return $this->db->delete('articles',['id'=>$id]);
+        }
+        public function num_rows(){
+            $id=$this->session->userdata('id');
+            $q=$this->db->select('*')
+                     ->from('articles')
+                     ->where(['user_id'=>$id])
+                     ->get();
+                    return $q->num_rows();
         }
       
     }

@@ -1,27 +1,36 @@
 <?php
 class Admin extends My_controller
 {
-    // public function __construct()
-    // {
-    //     parent::__construct();
-    //     // if(!$this->session->userdata('id')){
-    //     //     return redirect('Admin/welcome');
-    //     // }
-    // }
-
-
     public function welcome()
     {
+        $this->load->model('loginModel');
+        $config = [
+            'base_url' => base_url('Admin/welcome'),
+            'per_page' => 2,
+            'total_rows' => $this->loginModel->num_rows(),
+            'full_tag_open'=>'<ul class="pagination">',
+            'full_tag_close'=>'</ul>',
+            'next_tag_open'=>'<li class="page-link">',
+            'next_tag_close'=>'</li>',
+            'prev_tag_open'=>'<li class="page-link">',
+            'prev_tag_close'=>'</li>',
+            'num_tag_open'=>'<li class="page-link">',
+            'num_tag_close'=>'</li>',
+            'cur_tag_open'=>'<li class="active page-item"></li><a class="page-link">',
+            'cur_tag_close'=>'</a></li>'
+
+        ];
+        $this->pagination->initialize($config);
+
+
         if (!$this->session->userdata('id')) {
             return redirect('Admin/login');
         } else {
             $this->load->model('loginModel');
-            $articles = $this->loginModel->articleList();
-            // print_r($articles);
-            // echo "working";
-            // echo $this->session->userdata('id');
+            $articles = $this->loginModel->articleList($config['per_page'],$this->uri->segment(3));
             $this->load->view('Admin/dashboard', ['articles' => $articles]);
         }
+      
     }
     public function userValidation()
     {
@@ -37,7 +46,7 @@ class Admin extends My_controller
         }
     }
 
-  
+
     public function sendmail()
     {
         $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div');
@@ -46,11 +55,11 @@ class Admin extends My_controller
             $this->load->model('loginModel');
             if ($this->loginModel->addUser($post)) {
                 // echo "User added Successfully!";
-                $this->session->set_flashdata('user_added','New user added');
+                $this->session->set_flashdata('user_added', 'New user added');
                 return redirect('login/index');
             } else {
                 // echo "User not added";
-                $this->session->set_flashdata('user_not_added','User cannot be added');
+                $this->session->set_flashdata('user_not_added', 'User cannot be added');
             }
 
             //   $this->load->library('email');
@@ -71,35 +80,31 @@ class Admin extends My_controller
         }
     }
 
-    public function addArticle(){
+    public function addArticle()
+    {
         $this->load->view('Admin/add_article');
-
-     }
+    }
 
     public function logout()
     {
         $this->session->unset_userdata('id');
         return redirect('login/index');
     }
-    public function editUser(){
-
+    
+    public function editUser()
+    {
     }
-    public function delArticle(){
-        $id=$this->input->post('id');
+    public function delArticle()
+    {
+        $id = $this->input->post('id');
         $this->load->model('loginModel');
-        if($this->loginModel->delete($id)){
+        if ($this->loginModel->delete($id)) {
             $this->session->set_flashdata('delete_success', 'Article deleted successfully!');
             $this->load->view('Admin/add_article');
-           
-        }else{
+        } else {
             $this->session->set_flashdata('delete_failed', 'Article cannot be deleted');
-            $this->load->view('Admin/add_article'); 
-           
+            $this->load->view('Admin/add_article');
         }
-     
-        
-
-        
     }
 }
 ?>
