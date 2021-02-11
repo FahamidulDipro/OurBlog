@@ -34,5 +34,9 @@
             }
           
         }
+        public function register()
+        {
+            $this->load->view('Admin/register');
+        }
     }
 ?>

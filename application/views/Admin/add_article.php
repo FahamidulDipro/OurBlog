@@ -10,8 +10,10 @@ include "header.php";
     echo form_open('Admin/userValidation');
     ?>
     <?php
-        if($error=$this->session->flashdata('insert_failed')){
-            echo'<div class="alert alert-danger">'.$error.'</div>';
+        if($msg=$this->session->flashdata('insert_success')){
+            echo'<div class="alert alert-success">'.$msg.'</div>';
+        }else if($error=$this->session->flashdata('insert_failed')){
+            echo '<div class="alert alert-danger>'.$error.'</div>';
         }
     ?>
     <div class="row">

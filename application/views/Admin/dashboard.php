@@ -3,7 +3,7 @@ include "header.php";
 ?>
 <div class="container mt-5">
 
-        <a href="addUser"><div class="btn  btn-primary mb-3">Add Article</div></a>
+        <a href="addArticle"><div class="btn  btn-primary mb-3">Add Article</div></a>
 
     <!-- <h1 class="mt-3"><span class="text-success">Login successful!</span> Welcome to Admin Panel</h1> -->
     <table class="table table-bordered text-center">
@@ -29,7 +29,7 @@ include "header.php";
             } else {
                 echo '<tr><td colspan="3">No data available</td></tr>';
             }
-
+                // print_r($articles);
             ?>
 
         </tbody>

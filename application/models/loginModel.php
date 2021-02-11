@@ -22,5 +22,19 @@
         public function addArticles($array){
             return $this->db->insert('articles',$array);
         }
+        public function addUser($array){
+           return $this->db->insert('users',$array);
+
+        }
+        public function editUser(){
+
+        }
+        public function deleteUser(){
+
+        }
+        public function register()
+        {
+            // $this->load->view('Admin/register');
+        }
     }
 ?>
