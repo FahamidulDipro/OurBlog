@@ -30,7 +30,9 @@
           <li class="nav-item">
             <?php
             if ($this->session->userdata('id')) {
-              echo "<a href='logout' class='btn btn-light text-dark'>Logout</a>";
+              ?>
+              <li> <a href="<?php echo base_url('Admin/logout');?>" class='btn btn-light'>Logout</a></li>
+      <?php
             }
             ?>
           </li>

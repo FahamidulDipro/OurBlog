@@ -16,7 +16,7 @@ class Admin extends My_controller
             'prev_tag_close'=>'</li>',
             'num_tag_open'=>'<li class="page-link">',
             'num_tag_close'=>'</li>',
-            'cur_tag_open'=>'<li class="active page-item"></li><a class="page-link">',
+            'cur_tag_open'=>'<li class="page-item active"><a class="page-link">',
             'cur_tag_close'=>'</a></li>'
 
         ];
