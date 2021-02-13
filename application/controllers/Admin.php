@@ -103,7 +103,7 @@ class Admin extends My_controller
         //     $this->session->set_flashdata('edit_success','Article updated successfully');
         // }
     }
-    
+  
     public function delArticle()
     {
         $id = $this->input->post('id');
@@ -117,7 +117,14 @@ class Admin extends My_controller
         }
     }
     public function updateArticle(){
+        print_r($this->input->post());
+        $this->load->model('loginModel');
+        $this->loginModel->update();
+        if($this->loginModel->update()){
 
+        }else{
+            
+        }
     }
 }
 ?>

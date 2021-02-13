@@ -34,12 +34,16 @@
                     ->get();
                 return $q->row();
         }
-        // public function edit($id){
-        //     return $this->db->
-        // }
+        public function update($article_id,Array $article){
+            return $this->db->where('id',$article_id)
+                            ->update('articles',$article);
+                            
+        }
+
         public function delete($id){
            return $this->db->delete('articles',['id'=>$id]);
         }
+
         public function num_rows(){
             $id=$this->session->userdata('id');
             $q=$this->db->select('*')
