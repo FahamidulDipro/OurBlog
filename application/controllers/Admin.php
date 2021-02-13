@@ -5,7 +5,7 @@ class Admin extends My_controller
     {
         $this->load->model('loginModel');
         $config = [
-            'base_url' => base_url('Admin/welcome'),
+            'base_url' => base_url('Admin/Welcome'),
             'per_page' => 2,
             'total_rows' => $this->loginModel->num_rows(),
             'full_tag_open'=>'<ul class="pagination">',
@@ -24,7 +24,7 @@ class Admin extends My_controller
 
 
         if (!$this->session->userdata('id')) {
-            return redirect('Admin/login');
+            return redirect('login');
         } else {
             $this->load->model('loginModel');
             $articles = $this->loginModel->articleList($config['per_page'],$this->uri->segment(3));
@@ -91,9 +91,19 @@ class Admin extends My_controller
         return redirect('login/index');
     }
     
-    public function editUser()
+    public function editArticle()
     {
+        $id = $this->input->post('id');
+        // echo $id;
+        $this->load->model('loginModel');
+        // echo'<pre>';
+        $article = $this->loginModel->findArticle($id);
+        $this->load->view('Admin/edit_article',['article'=>$article]);
+        // if($this->loginModel->edit($id)){
+        //     $this->session->set_flashdata('edit_success','Article updated successfully');
+        // }
     }
+    
     public function delArticle()
     {
         $id = $this->input->post('id');
@@ -105,6 +115,9 @@ class Admin extends My_controller
             $this->session->set_flashdata('delete_failed', 'Article cannot be deleted');
             $this->load->view('Admin/add_article');
         }
+    }
+    public function updateArticle(){
+
     }
 }
 ?>

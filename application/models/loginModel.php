@@ -27,9 +27,16 @@
            return $this->db->insert('users',$array);
 
         }
-        public function edit(){
-
+        public function findArticle($article_id){
+            $q=$this->db->select('*')
+            ->from('articles')
+                    ->where('id',$article_id)
+                    ->get();
+                return $q->row();
         }
+        // public function edit($id){
+        //     return $this->db->
+        // }
         public function delete($id){
            return $this->db->delete('articles',['id'=>$id]);
         }

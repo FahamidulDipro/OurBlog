@@ -25,12 +25,27 @@ include "header.php";
                 foreach ($articles as $art) {
                     echo ' <tr><td>1</td>
                     <td>' . $art->article_title . '</td>
-                    <td><a href="#" class="btn btn-primary">Edit</a></td><td>';
+                    <td>
+                    <form action=' . base_url("Admin/editArticle") . ' method="post">
+                    <input type="hidden" name="id" value="' . $art->id . '">
+                  
+                    <input type="submit" class="btn btn-primary" value="Edit">
+                    </td>
+                    </form>
+                    <td>';
+                    
+                    echo'
+                    <form action=' . base_url("Admin/delArticle") . ' method="post">
+                    <input type="hidden" name="id" value="' . $art->id . '">
+                  
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                    
+                    </form>';
+                    // echo form_open('Admin/delArticle');
+                    // echo  form_hidden('id', $art->id);
+                    // echo form_submit(['name' => 'submit', 'value' => 'delete', 'class' => 'btn btn-danger']);
+                    // form_close();
 
-                    echo form_open('Admin/delArticle');
-                    echo  form_hidden('id', $art->id);
-                    echo form_submit(['name' => 'submit', 'value' => 'delete', 'class' => 'btn btn-danger']);
-                    form_close();
                     echo '</td>';
                 }
             } else {
