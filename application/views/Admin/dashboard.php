@@ -3,7 +3,7 @@ include "header.php";
 ?>
 <div class="container mt-5">
 
-    <a href="addArticle">
+    <a href="<?php echo base_url("Admin/addArticle");?>">
         <div class="btn  btn-primary mb-3">Add Article</div>
     </a>
 
@@ -21,6 +21,7 @@ include "header.php";
         <tbody>
 
             <?php
+    
             if (count($articles)) {
                 foreach ($articles as $art) {
                     echo ' <tr><td>1</td>
@@ -33,7 +34,7 @@ include "header.php";
                     </td>
                     </form>
                     <td>';
-                    
+
                     echo'
                     <form action=' . base_url("Admin/delArticle") . ' method="post">
                     <input type="hidden" name="id" value="' . $art->id . '">

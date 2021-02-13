@@ -117,13 +117,15 @@ class Admin extends My_controller
         }
     }
     public function updateArticle(){
-        print_r($this->input->post());
+        $post=$this->input->post();
+        $id = $this->input->post('id');
         $this->load->model('loginModel');
-        $this->loginModel->update();
-        if($this->loginModel->update()){
-
+        if($this->loginModel->update($id,$post)){
+            $this->session->set_flashdata('delete_success', 'Article updated successfully!');
+            $this->load->view('Admin/add_article');
         }else{
-            
+            $this->session->set_flashdata('delete_failed', 'Article cannot be updated');
+            $this->load->view('Admin/edit_article');
         }
     }
 }

@@ -18,7 +18,6 @@
                     $this->load->library('session');
                     $this->session->set_userdata('id',$id);
                     echo $_SESSION['id'];
-             
                     return redirect('Admin/welcome');
                 
                 }

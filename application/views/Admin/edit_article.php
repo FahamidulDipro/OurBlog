@@ -8,6 +8,7 @@ include "header.php";
 
 
     echo form_open('Admin/updateArticle');
+
     ?>
     <?php
     if ($msg = $this->session->flashdata('insert_success')) {
@@ -39,9 +40,9 @@ include "header.php";
             </div>
             <?php
             $id = $this->session->userdata("id");
-            echo form_hidden('user_id', $id);
+            echo form_hidden('id', $id);
             ?>
-            <?php echo form_submit(['class' => 'btn btn-info', 'type' => 'submit', 'value' => 'Submit']); ?>
+            <?php echo form_submit(['class' => 'btn btn-info', 'type' => 'submit', 'value' => 'Update']); ?>
             <?php echo form_reset(['class' => 'btn btn-secondary', 'type' => 'reset', 'value' => 'Reset']); ?>
         </div>
         <div class="col-lg-6 text-danger mt-4">
