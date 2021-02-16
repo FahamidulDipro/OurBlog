@@ -7,7 +7,7 @@ include "header.php";
     <?php
 
 
-    echo form_open('Admin/userValidation');
+    echo form_open_multipart('Admin/userValidation');
     ?>
     <?php
     if ($msg = $this->session->flashdata('insert_success')) {
@@ -35,6 +35,15 @@ include "header.php";
                 <label for="exampleInputPassword1" class="form-label">Article Description</label>
                 <?php
                 echo form_textarea(['class' => 'form-control', 'placeholder' => 'Description', 'type' => 'text', 'name' => 'description', 'value' => set_value('description')]);
+                ?>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label"><strong>Select Image</strong></label><br>
+                <?php
+              echo form_upload(['name'=>'userfile']);
+              if(isset($upload_error)){
+                  echo $upload_error;
+              }
                 ?>
             </div>
             <?php

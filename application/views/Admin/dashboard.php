@@ -30,9 +30,10 @@ include "header.php";
             <?php
         // print_r($articles);
             if (count($articles)) {
-                $count = $this->uri->segment(3);
+                $count = $this->uri->segment(3)+1;
+                // print_r($count);
                 foreach ($articles as $art) {
-                    echo ' <tr><td>'.$count.'</td>
+                    echo ' <tr><td>'.$count++.'</td>
                     <td>' . $art->article_title . '</td>
                     <td>
                     <form action=' . base_url("Admin/editArticle") . ' method="post">
