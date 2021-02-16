@@ -1,6 +1,13 @@
 <?php
 include "header.php";
 ?>
+ <?php
+    if ($del_msg = $this->session->flashdata('delete_success')) {
+        echo '<div class="alert alert-success">' . $del_msg . '</div>';
+    } else if ($del_error = $this->session->flashdata('delete_failed')) {
+        echo '<div class="alert alert-danger>' . $del_error . '</div>';
+    }
+    ?>
 <div class="container mt-5">
 
     <a href="<?php echo base_url("Admin/addArticle");?>">
@@ -21,10 +28,11 @@ include "header.php";
         <tbody>
 
             <?php
-    
+        // print_r($articles);
             if (count($articles)) {
+                $count = $this->uri->segment(3);
                 foreach ($articles as $art) {
-                    echo ' <tr><td>1</td>
+                    echo ' <tr><td>'.$count.'</td>
                     <td>' . $art->article_title . '</td>
                     <td>
                     <form action=' . base_url("Admin/editArticle") . ' method="post">

@@ -28,6 +28,7 @@ class Admin extends My_controller
         } else {
             $this->load->model('loginModel');
             $articles = $this->loginModel->articleList($config['per_page'],$this->uri->segment(3));
+            // print_r($articles);
             $this->load->view('Admin/dashboard', ['articles' => $articles]);
         }
       
@@ -39,7 +40,9 @@ class Admin extends My_controller
             $this->load->model('loginModel');
             $this->loginModel->addArticles($post);
             $this->session->set_flashdata('insert_success', 'Article added successfully!');
-            $this->load->view('Admin/add_article');
+            // $this->load->view('Admin/add_article');
+            return redirect('Admin/Welcome');
+       
         } else {
             $this->session->set_flashdata('insert_failed', 'Invalid Article name or Description');
             $this->load->view('Admin/add_article');
@@ -110,7 +113,8 @@ class Admin extends My_controller
         $this->load->model('loginModel');
         if ($this->loginModel->delete($id)) {
             $this->session->set_flashdata('delete_success', 'Article deleted successfully!');
-            $this->load->view('Admin/add_article');
+            // $this->load->view('Admin/add_article');
+            return redirect('Admin/Welcome');
         } else {
             $this->session->set_flashdata('delete_failed', 'Article cannot be deleted');
             $this->load->view('Admin/add_article');
@@ -122,7 +126,8 @@ class Admin extends My_controller
         $this->load->model('loginModel');
         if($this->loginModel->update($id,$post)){
             $this->session->set_flashdata('delete_success', 'Article updated successfully!');
-            $this->load->view('Admin/add_article');
+            // $this->load->view('Admin/add_article');
+            return redirect('Admin/Welcome');
         }else{
             $this->session->set_flashdata('delete_failed', 'Article cannot be updated');
             $this->load->view('Admin/edit_article');
