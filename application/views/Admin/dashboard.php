@@ -8,6 +8,17 @@ include "header.php";
         echo '<div class="alert alert-danger>' . $del_error . '</div>';
     }
     ?>
+    <script>
+$(document).ready(function(){
+  $('#myInput').on('keyup',function(){
+    var value = $(this).val().toLowerCase;
+    $('#myTable Tr').filter(function(){
+      $(this).toggle($(this).text().toLowerCase().indexOf(value)>-1);
+    });
+  });
+});
+
+</script>
 <div class="container mt-5">
 
     <a href="<?php echo base_url("Admin/addArticle");?>">
@@ -19,13 +30,16 @@ include "header.php";
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Article Image</th>
                 <th>Article Title</th>
+                <th>Description</th>
+                <th>Created At</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
         </thead>
 
-        <tbody>
+        <tbody id="myTable">
 
             <?php
         // print_r($articles);
@@ -34,7 +48,10 @@ include "header.php";
                 // print_r($count);
                 foreach ($articles as $art) {
                     echo ' <tr><td>'.$count++.'</td>
+                    <td><img src="'. $art->image_path . '" height="100px" width="150px"></td>
                     <td>' . $art->article_title . '</td>
+                    <td>' . $art->description . '</td>
+                    <td>' . date('d M y h:i:s',strtotime($art->created_at)). '</td>
                     <td>
                     <form action=' . base_url("Admin/editArticle") . ' method="post">
                     <input type="hidden" name="id" value="' . $art->id . '">

@@ -49,6 +49,7 @@ include "header.php";
             <?php
             $id = $this->session->userdata("id");
             echo form_hidden('user_id', $id);
+            echo form_hidden('created_at', date('Y:m:d H:i:s'));
             ?>
             <?php echo form_submit(['class' => 'btn btn-info', 'type' => 'submit', 'value' => 'Submit']); ?>
             <?php echo form_reset(['class' => 'btn btn-secondary', 'type' => 'reset', 'value' => 'Reset']); ?>

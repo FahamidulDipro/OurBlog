@@ -43,8 +43,8 @@ class Admin extends My_controller
         if ($this->form_validation->run('add_article_rules') && $this->upload->do_upload()) {
             $post = $this->input->post();
             $data = $this->upload->data();
-            $image_path = base_url("./Upload/".$data['raw_name'].$data['file_ext']);
-            // $post['image_path'] = $image_path;
+            $image_path = base_url("Upload/".$data['raw_name'].$data['file_ext']);
+            $post['image_path'] = $image_path;
             $this->load->model('loginModel');
             $this->loginModel->addArticles($post);
             $this->session->set_flashdata('insert_success', 'Article added successfully!');
