@@ -8,21 +8,14 @@ include "header.php";
         echo '<div class="alert alert-danger>' . $del_error . '</div>';
     }
     ?>
-    <script>
-$(document).ready(function(){
-  $('#myInput').on('keyup',function(){
-    var value = $(this).val().toLowerCase;
-    $('#myTable Tr').filter(function(){
-      $(this).toggle($(this).text().toLowerCase().indexOf(value)>-1);
-    });
-  });
-});
-
-</script>
+    
 <div class="container mt-5">
 
     <a href="<?php echo base_url("Admin/addArticle");?>">
         <div class="btn  btn-primary mb-3">Add Article</div>
+    </a>
+    <a href="<?php echo base_url("Admin/checkDetails");?>">
+        <div class="btn  btn-primary mb-3">Check Details</div>
     </a>
 
     <!-- <h1 class="mt-3"><span class="text-success">Login successful!</span> Welcome to Admin Panel</h1> -->
